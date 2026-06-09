@@ -2,6 +2,7 @@ import react, { useState } from "react"
 import Navbar from "./navbar";
 import Cart from "./cart";
 import Catego from "./category";
+import "./App.css";
 function App(){
 let jerseys=
 [
@@ -30,22 +31,33 @@ let jerseys=
   
 
   let [search,setsearch]=useState("");
+
   let [cart, setcart]=useState([])
 
-
   let [dropdown,setdropdown]=useState('All')
+
+  let [selectedSize, setSelectedSize] = useState({});
 
   
 
 
-
-  let addtocart=(jersey)=>{
-    setcart((prev)=>[...prev,jersey])
-
+let addtocart = (jersey) => {
+  if (selectedSize[jersey.id]) {
+    setcart((prev) => [
+      ...prev,
+      {
+        ...jersey,
+        size: selectedSize[jersey.id],
+      },
+    ]);
+  } else {
+    alert("Please select size");
   }
-  let removecart =(xyz)=>{
-    setcart((prev)=>prev.filter((item)=>item.id!==xyz))
-  }
+};
+
+let removecart = (xyz) => {
+  setcart((prev) => prev.filter((item) => item.id !== xyz));
+};
 
 let filteredjerseys=jerseys.filter((jersey)=>
   jersey.team.toLowerCase().includes(search.toLowerCase())&& 
@@ -76,29 +88,46 @@ return(
   <Catego option={dropdown}
         setoption={setdropdown}/>
 
-
+<div className="jersey-container">
   {filteredjerseys.map((jersey)=>(
-    <div key={jersey.id}>
+    <div className="jersey-card" key={jersey.id}>
       <p> Team:{jersey.team}</p>
-      <img src={jersey.image} alt={jersey.team}
+      <img   src={jersey.image} alt={jersey.team}
       style={{
     width: "220px",
     height: "220px",
     objectFit: "cover"
   }} />
+  <select className="size-select"
+  value={selectedSize[jersey.id] || ""}
+  onChange={(e) =>
+    setSelectedSize({
+      ...selectedSize,
+      [jersey.id]: e.target.value,
+    })
+  }
+>
+  <option value="">Select Size</option>
+  <option value="S">S</option>
+  <option value="M">M</option>
+  <option value="L">L</option>
+  <option value="XL">XL</option>
+</select>
    <p>Category: {jersey.category}</p>
    
   
     <p> price:${jersey.price}</p>
-      <button onClick={()=>addtocart(jersey)}>Add to cart</button>
+      <button className="cart-btn" onClick={()=>addtocart(jersey)}>Add to cart</button>
     </div>
   ))}
   
-
+</div>
   </>
+  
 )
-
-
-
 }
+
+
+
+
 export default App;

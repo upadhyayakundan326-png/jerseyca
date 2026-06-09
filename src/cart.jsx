@@ -8,6 +8,7 @@ function Cart(props) {
       {props.cart.map((item) => (
         <div key={item.id}>
           <p>{item.team}</p>
+          <p>Size: {item.size}</p>
           <p>{item.price}</p>
 
           <button onClick={() => props.removecart(item.id)}>

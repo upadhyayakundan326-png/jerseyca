@@ -48,11 +48,40 @@ let addtocart = (jersey) => {
       {
         ...jersey,
         size: selectedSize[jersey.id],
+        quantity:1,
       },
     ]);
   } else {
     alert("Please select size");
   }
+};
+let increase=(id,size)=>{
+  setcart((prev)=>
+  prev.map((item)=>
+  item.id===id&&item.size===size
+  ?{...item,quantity:item.quantity+1}
+  :item
+
+
+  ))
+}
+let decrease = (id, size) => {
+  setcart((prev) =>
+    prev.map((item) => {
+      if (item.id === id && item.size === size && item.quantity > 1) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      } 
+      else if (item.id === id && item.size === size && item.quantity === 1) {
+        return item;
+      } 
+      else {
+        return item;
+      }
+    })
+  );
 };
 
 let removecart = (xyz) => {
@@ -72,7 +101,7 @@ console.log(filteredjerseys)
 let total = 0;
 
 for (let i = 0; i < cart.length; i++) {
-  total = total + cart[i].price;
+  total = total + cart[i].price * cart[i].quantity;
 }
 return(
   <>
@@ -84,6 +113,10 @@ return(
   <Cart cart={cart}
     removecart={removecart}
     total={total}
+      clearcart={() => setcart([])}
+      increase={increase}
+      decrease={decrease}
+      
   />
   <Catego option={dropdown}
         setoption={setdropdown}/>
@@ -113,6 +146,8 @@ return(
   <option value="L">L</option>
   <option value="XL">XL</option>
 </select>
+
+
    <p>Category: {jersey.category}</p>
    
   

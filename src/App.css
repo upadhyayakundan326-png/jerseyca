@@ -32,3 +32,10 @@
 .cart-btn:hover{
   transform: scale(1.05);
 }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+}

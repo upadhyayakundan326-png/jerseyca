@@ -38,6 +38,8 @@ let jerseys=
 
   let [selectedSize, setSelectedSize] = useState({});
 
+  let [page,setpage]=useState("home");
+
   
 
 
@@ -105,6 +107,15 @@ for (let i = 0; i < cart.length; i++) {
 }
 return(
   <>
+  <nav className="nav">
+  <button onClick={()=>setpage("home")}>Home</button>
+  <button onClick={()=>setpage("about")}>About</button>
+  <button onClick={()=>setpage("help")}>Help</button>
+  <button onClick={()=>setpage("contact")}>contact us</button>
+
+  </nav>
+  {page==="home"&&(
+<>
   <Navbar search={search}
   setsearch={setsearch}
   
@@ -157,10 +168,73 @@ return(
   ))}
   
 </div>
+  
+  </>
+)}
+{page==="about"&&(
+  <>
+  <h3>Hi dear user</h3>
+  <hr/>
+  <section><strong>
+    <h3>Hi dear user</h3>
+  <hr/>
+  <p>
+Jerseyca is an online football jersey store where users can easily buy
+their favorite national and club team jerseys. We provide high-quality
+jerseys at affordable prices. Users can choose their favorite team,
+select the size, add it to the cart, and place their order. The main
+goal of Jerseyca is to provide football fans with the best jerseys of
+their favorite teams.</p></strong>
+</section>
+
+<section>
+  <p>
+    At <p className="w">Jerseyca</p>, we are committed to providing premium-quality football jerseys
+    with 100% trusted service. Every jersey is carefully selected to ensure
+    comfort, durability, and style. We focus on giving our customers the best
+    experience with secure payments, reliable support, and smooth shopping.
+  </p>
+
+  <p>
+    Trust Jerseyca for fast and safe delivery right to your doorstep. We make
+    sure your order reaches you on time with proper packaging and quality
+    assurance. Our goal is to build trust with football fans by delivering
+    authentic-looking jerseys and excellent customer satisfaction every time.
+  </p>
+</section>
+
+  </>
+)}
+{page==="contact"&&(
+<h3>contact us:<strong>9101648595</strong></h3>
+)}
+{page==="help"&&(
+  <>
+  <section>
+    <h2>Help Center</h2>
+
+    <p>
+      Welcome to Jerseyca! Here you can easily browse and buy your favorite
+      football jerseys. Use the search bar to find your team and filter by
+      category such as national or club jerseys.
+    </p>
+
+    <p>
+      Select your preferred size before adding a jersey to the cart. Once added,
+      you can increase or decrease quantity, remove items, or clear the cart.
+      We provide a smooth shopping experience with trusted service and fast delivery.
+    </p>
+  </section>
+  <footer>Your trusted Owner of JERSEYCA---<strong>Kundann Upadhyaya</strong></footer>
+  </>
+)}
   </>
   
-)
+  
+);
 }
+
+
 
 
 

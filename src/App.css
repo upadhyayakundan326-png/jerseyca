@@ -35,7 +35,46 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #121212;
   color: white;
   font-family: Arial, sans-serif;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.08) 2px,
+      transparent 2px,
+      transparent 20px
+    ),
+    linear-gradient(135deg, #ff416c, #ff4b2b, #3a1c71);
+}
+
+  
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background-color: #111;
+}
+
+.nav button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav button:hover {
+  background-color: crimson;
+  color: white;
+ transform: scale(1.05);
+}
+.w{
+  color:crimson;
 }

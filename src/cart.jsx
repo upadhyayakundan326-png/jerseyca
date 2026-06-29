@@ -8,21 +8,31 @@ function Cart(props) {
 
       {props.cart.map((item) => (
         <div key={item.id+item.size}>
-          <p>{item.team}</p>
+          <p>Team:{item.team}</p>
           <p>Size: {item.size}</p>
-          <p>{item.price}</p>
-          <p>{item.quantity}</p>
+          <p>Price:{item.price}</p>
+          <p>Quantity:{item.quantity}</p>
+          <img
+      src={item.image}
+      alt={item.team}
+      style={{
+        width: "120px",
+        height: "120px",
+        objectFit: "cover",
+      }}/>
           <button onClick={()=>props.increase(item.id,item.size)}>+</button>
           <button onClick={()=>props.decrease(item.id,item.size)}>-</button>
 
           <button onClick={() => props.removecart(item.id)}>
             Remove
           </button>
-          <button onClick={props.clearcart}>
-  Clear Cart
-</button>
+      
+
         </div>
       ))}
+      {props.cart.length > 0 && (
+  <button onClick={props.clearcart}>Clear Cart</button>
+)}
     </>
   );
 }

@@ -1,7 +1,7 @@
 function Cart(props) {
   return (
     <>
-      <h2>Cart: {props.cart.length}</h2>
+      <h2>🛒: {props.cart.length}</h2>
 
       <h3>Total Price: ₹{props.total}</h3>
       {props.cart.length === 0 && <h3>Cart is Empty</h3>}

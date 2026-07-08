@@ -117,8 +117,8 @@ for (let i = 0; i < cart.length; i++) {
   setsearch={setsearch}
   
   />
-  <button onClick={() => setshowcart(!showcart)}>
-      Cart ({cart.length})
+  <button onClick={() => setshowcart(!showcart)} className="c">
+      🛒 ({cart.length})
     </button>
  {showcart ? (
   <Cart

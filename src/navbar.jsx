@@ -1,8 +1,8 @@
 function Navbar(props){
 return(
-    <nav>
-        <h2>Wear your colour Own the Game </h2>
+    <nav> 
         <input
+        className="nav"
         type="text"
         placeholder="Enter your jersey"
         value={props.search}
